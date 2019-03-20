@@ -13,13 +13,14 @@ tf.app.flags.DEFINE_float('learning_rate', 0.0001, '')
 tf.app.flags.DEFINE_integer('epochs', 1000, '')
 tf.app.flags.DEFINE_float('moving_average_decay', 0.997, '')
 tf.app.flags.DEFINE_string('gpu_list', '0,1', '')
-tf.app.flags.DEFINE_string('checkpoint_path', '../EAST/model/east_font_resnet_v1_50_rbox/', '')
+tf.app.flags.DEFINE_string('checkpoint_path', 'model/east_font_resnet_v1_50_rbox/', '')
 tf.app.flags.DEFINE_boolean('restore', True, 'whether to resotre from checkpoint')
 tf.app.flags.DEFINE_boolean('use_multiprocessing', True, '')
 tf.app.flags.DEFINE_integer('save_checkpoint_steps', 1000, '')
 tf.app.flags.DEFINE_integer('save_summary_steps', 100, '')
 tf.app.flags.DEFINE_string('pretrained_model_path', None, '')
-tf.app.flags.DEFINE_string('train_txt_dir', '/clever/dataset/tezign-synth/background_image/merge_h_num4_h_num6_v4/train_txt_images/', '')
+tf.app.flags.DEFINE_string('images_dir', 'data/images_dir', '')
+tf.app.flags.DEFINE_string('txt_dir', 'data/txt_dir', '')
 
 import model
 import icdar
@@ -154,8 +155,8 @@ def main(argv=None):
                 variable_restore_op(sess)
 
         print('FLAGS.train_txt_dir',FLAGS.train_txt_dir)
-        generator = icdar.EAST_generator(data_path=FLAGS.train_txt_dir,
-                          txt_dir=FLAGS.train_txt_dir,
+        generator = icdar.EAST_generator(data_path=FLAGS.images_dir,
+                          txt_dir=FLAGS.txt_dir,
                           batch_size=FLAGS.batch_size,)
         
         if FLAGS.workers > 0:
