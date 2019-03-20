@@ -30,11 +30,11 @@
 
 ```
 python multigpu_train.py --gpu_list=0 --input_size=512 --batch_size=14 
-						 --checkpoint_path=/tmp/east_icdar2015_resnet_v1_50_rbox/ 
-    					 --workers=0  --images_dir=/data/ocr/icdar2015/ 
-        				 --txt_dir=/data/ocr/icdar2015/ 
+                         --checkpoint_path=/tmp/east_icdar2015_resnet_v1_50_rbox/ 
+                         --workers=0  --images_dir=/data/ocr/icdar2015/ 
+                         --txt_dir=/data/ocr/icdar2015/ 
                          --learning_rate=0.0001 --use_multiprocessing=True
-					     --pretrained_model_path=/tmp/resnet_v1_50.ckpt
+                         --pretrained_model_path=/tmp/resnet_v1_50.ckpt
 ```
 
 - 结果验证
